@@ -1,5 +1,21 @@
 package me.husseinfahmy.moneywise;
 
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Date;
+
 /**
  * Created by Mohamed on 2016-10-15.
  */
@@ -21,9 +37,10 @@ public class Profile {
         this.educationFees = educationFees;
         this.surplus = surplus;
         this.name = name;
-
         this.budget = getSAVING_FACTOR()*((balance+income-educationFees)/getNUM_OF_MONTHS());
     }
+
+
 
     //    GETTERS AND SETTERS:
     public void setBalance(float balance) {

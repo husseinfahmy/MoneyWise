@@ -1,19 +1,10 @@
 package me.husseinfahmy.moneywise;
 
-<<<<<<< HEAD
-/**
- * Created by Mohamed on 2016-10-15.
- */
 
 import java.util.Date;
 
-=======
-import java.util.Date;
 
-/**
- * Created by Salma on 2016-10-15.
- */
->>>>>>> origin/master
+
 
 public class Transaction {
 

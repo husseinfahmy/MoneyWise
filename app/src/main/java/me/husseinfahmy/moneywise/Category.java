@@ -66,4 +66,8 @@ public class Category {
     public void setTransactions(ArrayList<Transaction> transactions) {
         this.transactions = transactions;
     }
+
+    public String getName() {
+        return name;
+    }
 }
