@@ -9,6 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.yelp.clientlib.entities.Business;
+
 import java.util.List;
 
 /**
@@ -18,12 +20,16 @@ import java.util.List;
 public class SuggestionsListAdapter extends BaseAdapter {
 
     private static LayoutInflater inflater = null;
-    List classRoomList;
+    List<Business> suggestionList;
     Context context;
+
+    SuggestionsListAdapter(Context context, List<Business> suggestionList){
+
+    }
 
     @Override
     public int getCount() {
-        return classRoomList.size();
+        return suggestionList.size();
     }
 
     @Override

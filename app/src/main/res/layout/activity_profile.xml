@@ -23,11 +23,10 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Name"
+        android:hint="Name"
         android:ems="10"
         android:id="@+id/editText2"
         android:layout_alignTop="@+id/imageButton"
@@ -47,29 +46,30 @@
         android:layout_marginTop="72dp"
         android:theme="@style/Base.ThemeOverlay.AppCompat.ActionBar">
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:text="Spending "
-            android:ems="10"
+            android:ems="20"
             android:id="@+id/editText3" />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:text="Budget Left"
-            android:ems="10"
+            android:ems="20"
             android:id="@+id/editText4" />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:text="Speding Budget By Category"
-            android:ems="10"
-            android:id="@+id/editText5" />
+            android:ems="20"
+            android:id="@+id/editText5"/>
+
 
     </LinearLayout>
 

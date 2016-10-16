@@ -24,15 +24,14 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = new Intent(MainActivity.this, RecommendationsActivity.class);
         startActivity(intent);
-
+//
 
         setContentView(R.layout.activity_main2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -117,14 +116,25 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        Intent openMenuItem = new Intent(MainActivity.this,CategoryActivity.class);
 
         if (id == R.id.nav_food) {
-            // Handle the camera action
+            openMenuItem.putExtra("CATEGORY_NAME", "Eat Out");
+            startActivity(openMenuItem);
+
         } else if (id == R.id.nav_entertainment) {
+            openMenuItem.putExtra("CATEGORY_NAME", "Entertainment");
+            startActivity(openMenuItem);
+
 
         } else if (id == R.id.nav_shopping) {
+            openMenuItem.putExtra("CATEGORY_NAME", "Shopping");
+            startActivity(openMenuItem);
 
         } else if (id == R.id.nav_groceries) {
+            openMenuItem.putExtra("CATEGORY_NAME", "Groceries");
+            startActivity(openMenuItem);
+
 
         } else if (id == R.id.nav_settings) {}
 
