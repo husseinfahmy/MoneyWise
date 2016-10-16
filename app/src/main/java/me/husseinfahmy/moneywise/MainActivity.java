@@ -30,8 +30,9 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
+        Intent intent = new Intent(MainActivity.this, RecommendationsActivity.class);
         startActivity(intent);
+
 
         setContentView(R.layout.activity_main2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
 
 
         ArrayList<Category> categoryList = deserialize(getResources().openRawResource(R.raw.category_list));
@@ -71,11 +73,10 @@ public class MainActivity extends AppCompatActivity
             cat.setTotalSpent(categorySpent);
         }
 
+
         Profile me = new Profile(10000,0,7000,0,"dude");
         me.setTotalCount(totalCount);
         me.setTotalSpent(totalSpent);
-
-
     }
 
 
@@ -117,19 +118,17 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_food) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_entertainment) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_shopping) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_groceries) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_settings) {}
 
-        } else if (id == R.id.nav_send) {
 
-        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
