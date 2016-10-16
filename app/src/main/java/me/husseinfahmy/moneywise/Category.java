@@ -13,7 +13,7 @@ public class Category implements Serializable{
     private int totalCount;
     private float priority;
     private float avgCost;
-    private ArrayList<Transaction> transactions;
+    private ArrayList<Transaction> transactions = new ArrayList<>();
     static final long serialVersionUID =44L;
 
     public Category(String name) {

@@ -1,10 +1,6 @@
 package me.husseinfahmy.moneywise;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -33,8 +29,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(MainActivity.this, temp.class);
+//        startActivity(intent);
 
 
         setContentView(R.layout.activity_main2);
@@ -50,34 +46,34 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-//        ArrayList<Category> categoryList = deserialize(getResources().openRawResource(R.raw.b));
-//        Date today = new Date();
-//        long thirtyInSec = 2592000000L;
-//        Date thirtyDaysAgo = new Date((today.getTime() - thirtyInSec));
-//        int totalCount = 0;
-//        float totalSpent =0;
-//        for (Category cat : categoryList)
-//        {
-//            int categoryCount = 0;
-//            float categorySpent = 0;
-//            for (Transaction transaction : cat.getTransactions())
-//            {
-//                categoryCount++;
-//                totalCount++;
-//                categorySpent = categorySpent + transaction.getCost();
-//                totalSpent = totalSpent + transaction.getCost();
-//                if (transaction.getDate().compareTo(thirtyDaysAgo)<0)
-//                {
-//                    cat.getTransactions().remove(transaction);
-//                }
-//            }
-//            cat.setTotalCount(categoryCount);
-//            cat.setTotalSpent(categorySpent);
-//        }
-//
-//        Profile me = new Profile(10000,0,7000,0,"dude");
-//        me.setTotalCount(totalCount);
-//        //me.setTotalSpent(t);
+        ArrayList<Category> categoryList = deserialize(getResources().openRawResource(R.raw.category_list));
+        Date today = new Date();
+        long thirtyInSec = 2592000000L;
+        Date thirtyDaysAgo = new Date((today.getTime() - thirtyInSec));
+        int totalCount = 0;
+        float totalSpent =0;
+        for (Category cat : categoryList)
+        {
+            int categoryCount = 0;
+            float categorySpent = 0;
+            for (Transaction transaction : cat.getTransactions())
+            {
+                categoryCount++;
+                totalCount++;
+                categorySpent = categorySpent + transaction.getCost();
+                totalSpent = totalSpent + transaction.getCost();
+                if (transaction.getDate().compareTo(thirtyDaysAgo)<0)
+                {
+                    cat.getTransactions().remove(transaction);
+                }
+            }
+            cat.setTotalCount(categoryCount);
+            cat.setTotalSpent(categorySpent);
+        }
+
+        Profile me = new Profile(10000,0,7000,0,"dude");
+        me.setTotalCount(totalCount);
+        //me.setTotalSpent(t);
 
 
     }
