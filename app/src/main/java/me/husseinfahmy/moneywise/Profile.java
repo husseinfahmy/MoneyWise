@@ -9,23 +9,48 @@ public class Profile {
     String name;
     float balance;
     float income;
+    int totalCount;
+    float totalSpent;
     float educationFees;
     final int NUM_OF_MONTHS = 12;
     final double SAVING_FACTOR = 0.85;
     float surplus;
     double budget;
 
-    public Profile(float balance, float income, float educationFees, float surplus, String name) {
+    public Profile(float balance, float income, float educationFees, float surplus, String name, int totalCount, float totalSpent) {
         this.balance = balance;
         this.income = income;
         this.educationFees = educationFees;
         this.surplus = surplus;
         this.name = name;
+        this.totalCount = totalCount;
+        this.totalSpent = totalSpent;
 
         this.budget = getSAVING_FACTOR()*((balance+income-educationFees)/getNUM_OF_MONTHS());
     }
 
     //    GETTERS AND SETTERS:
+
+    public int getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(int totalCount) {
+        this.totalCount = totalCount;
+    }
+
+    public float getTotalSpent() {
+        return totalSpent;
+    }
+
+    public void setTotalSpent(float totalSpent) {
+        this.totalSpent = totalSpent;
+    }
+
+    public void setBudget(double budget) {
+        this.budget = budget;
+    }
+
     public void setBalance(float balance) {
         this.balance = balance;
     }
