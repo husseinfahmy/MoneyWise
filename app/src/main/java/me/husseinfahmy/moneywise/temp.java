@@ -19,6 +19,7 @@ public class temp extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
 
+
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
