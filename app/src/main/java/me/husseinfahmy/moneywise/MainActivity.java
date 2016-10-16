@@ -46,28 +46,28 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        ArrayList<Category> categoryList = deserialize(getResources().openRawResource(R.raw.b));
-        Date today = new Date();
-        long thirtyInSec = 2592000000L;
-        Date thirtyDaysAgo = new Date((today.getTime() - thirtyInSec));
-        int totalCount = 0;
-        for (Category cat : categoryList)
-        {
-            int categoryCount = 0;
-            float categorySpent = 0;
-            for (Transaction transaction : cat.getTransactions())
-            {
-                categoryCount++;
-                totalCount++;
-                categorySpent = categorySpent + transaction.getCost();
-                if (transaction.getDate().compareTo(thirtyDaysAgo)<0)
-                {
-                    cat.getTransactions().remove(transaction);
-                }
-            }
-            cat.setTotalCount(categoryCount);
-            cat.setTotalSpent(categorySpent);
-        }
+//        ArrayList<Category> categoryList = deserialize(getResources().openRawResource(R));
+//        Date today = new Date();
+//        long thirtyInSec = 2592000000L;
+//        Date thirtyDaysAgo = new Date((today.getTime() - thirtyInSec));
+//        int totalCount = 0;
+//        for (Category cat : categoryList)
+//        {
+//            int categoryCount = 0;
+//            float categorySpent = 0;
+//            for (Transaction transaction : cat.getTransactions())
+//            {
+//                categoryCount++;
+//                totalCount++;
+//                categorySpent = categorySpent + transaction.getCost();
+//                if (transaction.getDate().compareTo(thirtyDaysAgo)<0)
+//                {
+//                    cat.getTransactions().remove(transaction);
+//                }
+//            }
+//            cat.setTotalCount(categoryCount);
+//            cat.setTotalSpent(categorySpent);
+//        }
 
     }
 
