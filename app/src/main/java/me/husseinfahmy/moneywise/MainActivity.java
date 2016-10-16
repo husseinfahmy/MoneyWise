@@ -75,7 +75,6 @@ public class MainActivity extends AppCompatActivity
         me.setTotalCount(totalCount);
         //me.setTotalSpent(t);
 
-
     }
 
 
