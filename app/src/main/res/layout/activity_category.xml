@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
@@ -12,7 +13,8 @@
         android:textStyle="bold"
         android:textAllCaps="true"
         android:textAlignment="center"
-        android:hint="sup" />
+        android:hint="sup"
+        android:id="@+id/category_title"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,8 +37,9 @@
 
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/suggestion_list_view">
 
     </ListView>
 

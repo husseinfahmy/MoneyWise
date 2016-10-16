@@ -36,8 +36,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".temp"
-            android:label="temp"
+            android:name=".CategoryActivity"
+            android:label="CategoryActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
