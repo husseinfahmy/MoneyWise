@@ -1,7 +1,11 @@
 package me.husseinfahmy.moneywise;
 
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -17,7 +21,7 @@ import static android.R.attr.category;
 
 public class CategoryActivity extends AppCompatActivity {
 
-    List suggestionList;
+    ArrayList<String> suggestionList;
     ListView suggestionsListView;
     TextView categoryTitle;
 
@@ -26,10 +30,14 @@ public class CategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
 
 
         categoryTitle = (TextView) findViewById(R.id.category_title);
         categoryTitle.setText("GENERIC CATEGORY");
+
         suggestionList = new ArrayList<String>();
         suggestionList.add("jo");
         suggestionList.add("jo");
@@ -41,8 +49,9 @@ public class CategoryActivity extends AppCompatActivity {
         suggestionList.add("jo");
         suggestionList.add("jo");
 
-        ArrayAdapter<String> suggestionAdapter = new ArrayAdapter<String>(this, R.layout.simple_text_view);
         suggestionsListView = (ListView)findViewById(R.id.suggestion_list_view);
+
+        ArrayAdapter<String> suggestionAdapter = new ArrayAdapter<String>(this, R.layout.simple_text_view, suggestionList);
         suggestionsListView.setAdapter(suggestionAdapter);
 
 
