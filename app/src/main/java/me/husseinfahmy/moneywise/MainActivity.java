@@ -73,8 +73,7 @@ public class MainActivity extends AppCompatActivity
 
         Profile me = new Profile(10000,0,7000,0,"dude");
         me.setTotalCount(totalCount);
-        //me.setTotalSpent(t);
-
+        me.setTotalSpent(totalSpent);
     }
 
 
