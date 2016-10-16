@@ -1,10 +1,6 @@
 package me.husseinfahmy.moneywise;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -33,9 +29,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = new Intent(MainActivity.this, temp.class);
-        startActivity(intent);
-        System.exit(6);
+//        Intent intent = new Intent(MainActivity.this, temp.class);
+//        startActivity(intent);
 
 
         setContentView(R.layout.activity_main2);
@@ -51,7 +46,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        ArrayList<Category> categoryList = deserialize(getResources().openRawResource(R.raw.b));
+        ArrayList<Category> categoryList = deserialize(getResources().openRawResource(R.raw.category_list));
         Date today = new Date();
         long thirtyInSec = 2592000000L;
         Date thirtyDaysAgo = new Date((today.getTime() - thirtyInSec));
