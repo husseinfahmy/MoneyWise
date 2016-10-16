@@ -1,17 +1,16 @@
 package me.husseinfahmy.moneywise;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
-
-
-
-public class Transaction {
+public class Transaction implements Serializable {
 
     private String name;
     private String category;
     private float cost;
     private Date date;
+    static final long serialVersionUID =45L;
 
 
     public Transaction(String name, String category, String cost) {

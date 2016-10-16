@@ -23,6 +23,8 @@ import java.util.Date;
 public class Profile {
 
     String name;
+    int totalCount;
+    float totalSpent;
     float balance;
     float income;
     float educationFees;
@@ -43,6 +45,28 @@ public class Profile {
 
 
     //    GETTERS AND SETTERS:
+
+
+    public int getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(int totalCount) {
+        this.totalCount = totalCount;
+    }
+
+    public float getTotalSpent() {
+        return totalSpent;
+    }
+
+    public void setTotalSpent(float totalSpent) {
+        this.totalSpent = totalSpent;
+    }
+
+    public void setBudget(double budget) {
+        this.budget = budget;
+    }
+
     public void setBalance(float balance) {
         this.balance = balance;
     }

@@ -1,17 +1,53 @@
 package me.husseinfahmy.moneywise;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
+import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 
-/**
- * Created by Salma on 2016-10-15.
- */
 
-public class temp {
+public class temp extends AppCompatActivity {
 
-    public static void main(String[] args ) {
+
+    protected void onCreate(Bundle savedInstanceState) {
+
+
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+
+                // Show an expanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+
+            } else {
+
+                // No explanation needed, we can request the permission.
+
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},2
+                );
+
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        }
+
+
+        super.onCreate(savedInstanceState);
         ArrayList<Category> categoryList = new ArrayList<>();
 
         //shopping
@@ -42,7 +78,7 @@ public class temp {
 
         Collections.shuffle(transactions);
 
-        SimpleDateFormat format = new SimpleDateFormat("DD/MM/YYYY");
+        SimpleDateFormat format = new SimpleDateFormat("DD/MM/yyyy");
 
         int i = 1;
         for (String str : transactions)
@@ -62,32 +98,39 @@ public class temp {
         }
 
         System.out.println(transactionsList);
-        ArrayList<Category> catagoryArray = new ArrayList<Category>();
+        ArrayList<Category> categoryArray = new ArrayList<Category>();
 
         Category cat = new Category("eatOut");
-        catagoryArray.add(cat);
+        categoryArray.add(cat);
         Category cat2 = new Category("groceries");
-        catagoryArray.add(cat2);
+        categoryArray.add(cat2);
         Category cat3 = new Category("shopping");
-        catagoryArray.add(cat3);
+        categoryArray.add(cat3);
         Category cat4 = new Category("entertainment");
-        catagoryArray.add(cat4);
+        categoryArray.add(cat4);
 
         for (Transaction trans : transactionsList)
         {
-            for (Category category : catagoryArray)
+            for (Category category : categoryArray)
             {
                 if (category.getName().equals(trans.getCategory()))
                 {
+                    System.out.println("hshshhshs");
                     category.getTransactions().add(trans);
                 }
             }
         }
 
-        for (Category category : catagoryArray)
+        for (Category category : categoryArray)
         {
             System.out.println(category.toString());
         }
+
+        String fileName = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) +"/"+ "categoryList.bin";
+
+        MainActivity.serialize(categoryList,(fileName));
+
+
     }
 
 }
