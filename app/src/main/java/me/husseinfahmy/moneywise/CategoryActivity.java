@@ -38,6 +38,7 @@ import static android.R.attr.category;
 public class CategoryActivity extends AppCompatActivity {
 
     ArrayList<Business> suggestionList;
+    SuggestionsListAdapter suggestionsListAdapter;
     ListView suggestionsListView;
     TextView categoryTitle;
     TextView suggestionsTitle;
@@ -55,6 +56,9 @@ public class CategoryActivity extends AppCompatActivity {
         openingIntent = getIntent();
         categoryName = openingIntent.getStringExtra("CATEGORY_NAME");
 
+        suggestionList = recommendationsFunction(categoryName);
+        suggestionsListAdapter = new SuggestionsListAdapter(this, suggestionList);
+
         categoryTitle = (TextView) findViewById(R.id.category_title);
         categoryTitle.setText(categoryName);
 
@@ -62,6 +66,7 @@ public class CategoryActivity extends AppCompatActivity {
         suggestionsTitle.setText("SUGGESTIONS");
 
         suggestionsListView = (ListView)findViewById(R.id.suggestion_list_view);
+        suggestionsListView.setAdapter(suggestionsListAdapter);
 
 
 
@@ -77,7 +82,6 @@ public class CategoryActivity extends AppCompatActivity {
         YelpAPIFactory apiFactory = new YelpAPIFactory("Mas47GwCA1Bio3uJ08yIGg", "o9rKaeLjjopt_90o1bdGFbuIbmc", "k-rbv7P8UGAnPDyiegmBJCN3Wg06Ywf1", "AI1-oHQCwi-Ttvif7gzPCE8GX-8");
         YelpAPI yelpAPI = apiFactory.createAPI();
         Map<String, String> params = new HashMap<>();
-
 
         params.put("term", category + "/*PUT */");
         params.put("limit", "10");

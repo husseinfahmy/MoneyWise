@@ -25,6 +25,8 @@ public class SuggestionsListAdapter extends BaseAdapter {
 
     SuggestionsListAdapter(Context context, List<Business> suggestionList){
 
+        this.suggestionList = suggestionList;
+        this.context = context;
     }
 
     @Override
@@ -57,19 +59,18 @@ public class SuggestionsListAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, final ViewGroup parent) {
 
         //TODO:FIGURE OUT OBJECT TYPE
-//        ClassRoom currentClassroom = (ClassRoom) classRoomList.get(position);
-
+        Business currentBusiness = (Business) suggestionList.get(position);
+        String businessName = currentBusiness.name();
+        double distance = currentBusiness.distance();
         View listItem = convertView;
         if (convertView == null) {
             listItem = inflater.inflate(R.layout.suggested_item, parent, false);
             TextView suggestionName = (TextView) listItem.findViewById(R.id.suggestion_title);
-                suggestionName.setText("INSERT NAME");
+                suggestionName.setText(businessName);
             TextView suggestionPrice = (TextView)listItem.findViewById(R.id.suggestion_price);
                 suggestionName.setText("$$");
             final TextView suggestionLocation = (TextView) listItem.findViewById(R.id.suggestion_location);
-                suggestionName.setText("INSERT LOCATION");
-
-
+                suggestionName.setText(distance+" km");
         }
 
 
