@@ -1,10 +1,10 @@
 package me.husseinfahmy.moneywise;
 
+
 import java.util.Date;
 
-/**
- * Created by Salma on 2016-10-15.
- */
+
+
 
 public class Transaction {
 

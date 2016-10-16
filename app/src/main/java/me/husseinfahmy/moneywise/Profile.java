@@ -1,5 +1,21 @@
 package me.husseinfahmy.moneywise;
 
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Date;
+
 /**
  * Created by Mohamed on 2016-10-15.
  */
@@ -9,48 +25,24 @@ public class Profile {
     String name;
     float balance;
     float income;
-    int totalCount;
-    float totalSpent;
     float educationFees;
     final int NUM_OF_MONTHS = 12;
     final double SAVING_FACTOR = 0.85;
     float surplus;
     double budget;
 
-    public Profile(float balance, float income, float educationFees, float surplus, String name, int totalCount, float totalSpent) {
+    public Profile(float balance, float income, float educationFees, float surplus, String name) {
         this.balance = balance;
         this.income = income;
         this.educationFees = educationFees;
         this.surplus = surplus;
         this.name = name;
-        this.totalCount = totalCount;
-        this.totalSpent = totalSpent;
-
         this.budget = getSAVING_FACTOR()*((balance+income-educationFees)/getNUM_OF_MONTHS());
     }
 
+
+
     //    GETTERS AND SETTERS:
-
-    public int getTotalCount() {
-        return totalCount;
-    }
-
-    public void setTotalCount(int totalCount) {
-        this.totalCount = totalCount;
-    }
-
-    public float getTotalSpent() {
-        return totalSpent;
-    }
-
-    public void setTotalSpent(float totalSpent) {
-        this.totalSpent = totalSpent;
-    }
-
-    public void setBudget(double budget) {
-        this.budget = budget;
-    }
-
     public void setBalance(float balance) {
         this.balance = balance;
     }
