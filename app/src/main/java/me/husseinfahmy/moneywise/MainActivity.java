@@ -1,5 +1,6 @@
 package me.husseinfahmy.moneywise;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -29,8 +30,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        Intent intent = new Intent(MainActivity.this, temp.class);
-//        startActivity(intent);
+        Intent intent = new Intent(MainActivity.this, RecommendationsActivity.class);
+        startActivity(intent);
 
 
         setContentView(R.layout.activity_main2);

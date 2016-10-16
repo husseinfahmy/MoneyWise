@@ -1,13 +1,24 @@
 package me.husseinfahmy.moneywise;
 
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.yelp.clientlib.connection.YelpAPI;
 import com.yelp.clientlib.connection.YelpAPIFactory;
+import com.yelp.clientlib.entities.Business;
+import com.yelp.clientlib.entities.SearchResponse;
+import com.yelp.clientlib.entities.options.CoordinateOptions;
 
+import junit.framework.Assert;
+
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RecommendationsActivity extends AppCompatActivity {
 
@@ -16,12 +27,54 @@ public class RecommendationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommendations);
 
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+
         YelpAPIFactory apiFactory = new YelpAPIFactory("Mas47GwCA1Bio3uJ08yIGg", "o9rKaeLjjopt_90o1bdGFbuIbmc", "XlzyPKV4L9QFzaaw6qr3FO1zala2F6NL", "In5IaMHhjtc4Gz4Pv6Fs1A3paPU");
         YelpAPI yelpAPI = apiFactory.createAPI();
         Map<String, String> params = new HashMap<>();
 
-        params.put("term","restaurant");
+        params.put("term","restaurant/*PUT */");
         params.put("limit", "10");
+        params.put("sort", "1");
+        CoordinateOptions coordinate = CoordinateOptions.builder()
+                .latitude(43.010059)
+                .longitude(-81.273522).build();
+        Call<SearchResponse> call = yelpAPI.search(coordinate, params);
+        try{
+            Callback<SearchResponse> callback = new Callback<SearchResponse>() {
+                @Override
+                public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {
+                    SearchResponse searchResponse = response.body();
+                    // Update UI text with the searchResponse.
+                }
+                @Override
+                public void onFailure(Call<SearchResponse> call, Throwable t) {
+                    // HTTP error happened, do something to handle it.
+                }
+            };
+
+            Response<SearchResponse> response = call.execute();
+            response.body();
+            Assert.assertEquals(200, response.code());
+            SearchResponse searchResponse = response.body();
+            Assert.assertNotNull(searchResponse);
+
+
+            Business[] business = new Business[10];
+
+            for(int i = 0; i < 10; i++){
+                business[i] = searchResponse.businesses().get(i);
+                System.out.println(business[i].name());
+            }
+
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+
 
     }
 }
