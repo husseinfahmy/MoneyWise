@@ -13,6 +13,7 @@ import com.yelp.clientlib.entities.options.CoordinateOptions;
 import junit.framework.Assert;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,7 +32,7 @@ public class RecommendationsActivity extends AppCompatActivity {
 
         StrictMode.setThreadPolicy(policy);
 
-        YelpAPIFactory apiFactory = new YelpAPIFactory("Mas47GwCA1Bio3uJ08yIGg", "o9rKaeLjjopt_90o1bdGFbuIbmc", "tr8wavQUlQ_UZrgzDgdSxkaFgPHODIG9", "nC1hVX7Q78ansPkeVGk9xYC49Dc");
+        YelpAPIFactory apiFactory = new YelpAPIFactory("Mas47GwCA1Bio3uJ08yIGg", "o9rKaeLjjopt_90o1bdGFbuIbmc", "k-rbv7P8UGAnPDyiegmBJCN3Wg06Ywf1", "AI1-oHQCwi-Ttvif7gzPCE8GX-8");
         YelpAPI yelpAPI = apiFactory.createAPI();
         Map<String, String> params = new HashMap<>();
 
@@ -43,17 +44,17 @@ public class RecommendationsActivity extends AppCompatActivity {
                 .longitude(-81.273522).build();
         Call<SearchResponse> call = yelpAPI.search(coordinate, params);
         try{
-            Callback<SearchResponse> callback = new Callback<SearchResponse>() {
-                @Override
-                public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {
-                    SearchResponse searchResponse = response.body();
-                    // Update UI text with the searchResponse.
-                }
-                @Override
-                public void onFailure(Call<SearchResponse> call, Throwable t) {
-                    // HTTP error happened, do something to handle it.
-                }
-            };
+//            Callback<SearchResponse> callback = new Callback<SearchResponse>() {
+//                @Override
+//                public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {
+//                    SearchResponse searchResponse = response.body();
+//                    // Update UI text with the searchResponse.
+//                }
+//                @Override
+//                public void onFailure(Call<SearchResponse> call, Throwable t) {
+//                    // HTTP error happened, do something to handle it.
+//                }
+//            };
 
             Response<SearchResponse> response = call.execute();
             response.body();
@@ -62,11 +63,11 @@ public class RecommendationsActivity extends AppCompatActivity {
             Assert.assertNotNull(searchResponse);
 
 
-            Business[] business = new Business[10];
+            ArrayList<Business> results = new ArrayList<>();
 
             for(int i = 0; i < 10; i++){
-                business[i] = searchResponse.businesses().get(i);
-                System.out.println(business[i].name());
+                results.add(searchResponse.businesses().get(i));
+                System.out.println(searchResponse.businesses().get(i).name());
             }
 
 

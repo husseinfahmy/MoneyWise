@@ -55,6 +55,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         float totalSpent =0;
         for (Category cat : categoryList)
         {
+            if(cat.getName().equals("eatOut"))
+            {
+                cat.setName("restaurant");
+            }
             int categoryCount = 0;
             float categorySpent = 0;
             for (Transaction transaction : cat.getTransactions())
