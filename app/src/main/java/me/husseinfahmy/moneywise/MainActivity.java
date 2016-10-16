@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
+
         ArrayList<Category> categoryList = deserialize(getResources().openRawResource(R.raw.category_list));
         Date today = new Date();
         long thirtyInSec = 2592000000L;
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity
             cat.setTotalCount(categoryCount);
             cat.setTotalSpent(categorySpent);
         }
+
 
         Profile me = new Profile(10000,0,7000,0,"dude");
         me.setTotalCount(totalCount);
