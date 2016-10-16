@@ -1,17 +1,19 @@
 package me.husseinfahmy.moneywise;
 
+import android.os.Bundle;
+import android.os.Environment;
+import android.support.v7.app.AppCompatActivity;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 
-/**
- * Created by Salma on 2016-10-15.
- */
 
-public class temp {
+public class temp extends AppCompatActivity {
 
-    public static void main(String[] args ) {
+
+    protected void onCreate(Bundle savedInstanceState) {
+
         ArrayList<Category> categoryList = new ArrayList<>();
 
         //shopping
@@ -42,7 +44,7 @@ public class temp {
 
         Collections.shuffle(transactions);
 
-        SimpleDateFormat format = new SimpleDateFormat("DD/MM/YYYY");
+        SimpleDateFormat format = new SimpleDateFormat("DD/MM/yyyy");
 
         int i = 1;
         for (String str : transactions)
@@ -88,6 +90,10 @@ public class temp {
         {
             System.out.println(category.toString());
         }
+
+        String fileName = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) +"/"+ "categoryList.bin";
+
+        MainActivity.serialize(categoryList,(fileName));
     }
 
 }

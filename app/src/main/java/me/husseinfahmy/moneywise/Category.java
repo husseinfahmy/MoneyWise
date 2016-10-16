@@ -1,18 +1,20 @@
 package me.husseinfahmy.moneywise;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Mohamed on 2016-10-15.
  */
 
-public class Category {
+public class Category implements Serializable{
     private String name;
     private float totalSpent;
     private int totalCount;
     private float priority;
     private float avgCost;
     private ArrayList<Transaction> transactions;
+    static final long serialVersionUID =44L;
 
     public Category(String name) {
         this.name = name;
@@ -69,5 +71,10 @@ public class Category {
 
     public String getName() {
         return name;
+    }
+
+    public void cleanList()
+    {
+
     }
 }
